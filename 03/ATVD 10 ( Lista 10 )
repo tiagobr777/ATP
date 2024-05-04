@@ -1,0 +1,58 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        
+        int lucroMenorQue10 = 0;
+        int lucroEntre10e20 = 0;
+        int lucroMaiorQue20 = 0;
+
+ 
+        double totalCompra = 0;
+        double totalVenda = 0;
+        double lucroTotal = 0;
+
+        Console.WriteLine("Digite o preço de compra e de venda de cada mercadoria. Digite 0 para encerrar.");
+
+       
+        while (true)
+        {
+            Console.Write("Preço de compra: ");
+            double precoCompra = double.Parse(Console.ReadLine());
+
+           
+            if (precoCompra == 0)
+                break;
+
+            Console.Write("Preço de venda: ");
+            double precoVenda = double.Parse(Console.ReadLine());
+
+           
+            double lucro = precoVenda - precoCompra;
+
+           
+            if (lucro < (0.1 * precoCompra))
+                lucroMenorQue10++;
+            else if (lucro >= (0.1 * precoCompra) && lucro <= (0.2 * precoCompra))
+                lucroEntre10e20++;
+            else
+                lucroMaiorQue20++;
+
+           
+            totalCompra += precoCompra;
+            totalVenda += precoVenda;
+            lucroTotal += lucro;
+        }
+
+        
+        Console.WriteLine("\nResultados:");
+        Console.WriteLine("Mercadorias com lucro inferior a 10%: {0}", lucroMenorQue10);
+        Console.WriteLine("Mercadorias com lucro entre 10% e 20%: {0}", lucroEntre10e20);
+        Console.WriteLine("Mercadorias com lucro superior a 20%: {0}", lucroMaiorQue20);
+        Console.WriteLine("Valor total de compra: {0}", totalCompra);
+        Console.WriteLine("Valor total de venda: {0}", totalVenda);
+        Console.WriteLine("Lucro total: {0}", lucroTotal);
+    }
+}
