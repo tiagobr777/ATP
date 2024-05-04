@@ -1,0 +1,49 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        double salario;
+        int numeroFilhos;
+        double somaSalario = 0;
+        int totalHabitantes = 0;
+        int totalFilhos = 0;
+        int totalSalario100 = 0;
+        double maiorSalario = double.MinValue;
+
+        Console.WriteLine("Digite o salário do habitante:");
+        salario = Convert.ToDouble(Console.ReadLine());
+
+        while (salario >= 0) {
+            totalHabitantes++;
+            somaSalario += salario;
+
+            if (salario > maiorSalario) {
+                maiorSalario = salario;
+            }
+
+            Console.WriteLine("Digite o número de filhos do habitante:");
+            numeroFilhos = Convert.ToInt32(Console.ReadLine());
+            totalFilhos += numeroFilhos;
+
+            if (salario <= 100) {
+                totalSalario100++;
+            }
+
+            Console.WriteLine("Digite o salário do próximo habitante:");
+            salario = Convert.ToDouble(Console.ReadLine());
+        }
+
+        if (totalHabitantes > 0) {
+            int mediaSalario = (int)(somaSalario / totalHabitantes);
+            int mediaFilhos = totalFilhos / totalHabitantes;
+            int percentualSalario100 = totalSalario100 * 100 / totalHabitantes;
+
+            Console.WriteLine($"Média do salário da população: {mediaSalario}");
+            Console.WriteLine($"Média do número de filhos: {mediaFilhos}");
+            Console.WriteLine($"Maior salário: {Convert.ToInt32(maiorSalario)}");
+            Console.WriteLine($"Percentual de pessoas com salário até R$100,00: {percentualSalario100}%");
+        } else {
+            Console.WriteLine("Nenhum dado foi inserido.");
+        }
+    }
+}
