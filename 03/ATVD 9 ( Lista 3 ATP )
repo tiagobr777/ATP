@@ -1,0 +1,27 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite o valor de L: ");
+        int L = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("A soma de todos os elementos da série de Fibonacci menores que {0} é:", L);
+
+        int a = 0;
+        int b = 1;
+        int soma = 0;
+
+        while (a < L)
+        {
+            soma += a;
+
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+
+        Console.WriteLine(soma);
+    }
+}
