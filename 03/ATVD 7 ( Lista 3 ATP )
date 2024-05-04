@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um valor inteiro positivo n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double soma = 0.0;
+
+        Console.WriteLine("Termos gerados:");
+
+        for (int i = 1; i <= n; i++)
+        {
+            double termo = 1.0 / i;
+            soma += termo;
+            Console.WriteLine("1/{0} = {1:0.00}", i, termo);
+        }
+
+        Console.WriteLine("Valor final de S = {0:0.00}", soma);
+    }
+}
