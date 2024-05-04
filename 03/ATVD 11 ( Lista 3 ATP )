@@ -1,0 +1,50 @@
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+   
+    double votos;
+    int[] votosCandidatos = new int[4];
+    int nulo = 0, branco = 0;
+    while(true){
+    Console.WriteLine ("Digite 1 para fulano, 2 para sicrano, 3 para beltrano, 4 para siclano, 5 para nulo e 6 para voto branco");
+      
+    votos = double.Parse(Console.ReadLine());
+   
+      
+      if(votos==0){
+        break;
+        
+      }
+      else  if (votos==1){
+       votosCandidatos[0]++;
+    }  
+     
+      else if(votos == 2){
+        votosCandidatos[1]++;
+      }  
+      else if(votos == 3){
+        votosCandidatos[2]++;
+      }
+      else if(votos == 4){
+        votosCandidatos[3]++;
+      }
+      else if(votos == 5){
+        nulo++;
+      }
+      else if(votos == 6){
+        branco++;
+      }
+      else{
+        Console.WriteLine("Digito inválido");
+      }
+      
+      }
+    Console.WriteLine("Votos primeiro candidato: " + votosCandidatos[0]);
+    Console.WriteLine("Votos segundo candidato: " + votosCandidatos[1]);
+    Console.WriteLine("Votos quinto candidato: " + votosCandidatos[2]);
+    Console.WriteLine("Votos quarto candidato: " + votosCandidatos[3]);
+    Console.WriteLine("Votos nulos: " + nulo);
+    Console.WriteLine("Votos brancos: " + branco);
+}
+  }
