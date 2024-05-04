@@ -1,0 +1,28 @@
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+  double num;
+    int contPositivos = 0, contZeros = 0, contNegativos = 0;
+    string opcao;
+
+    do {
+      Console.WriteLine("Informe um número: ");
+      num = double.Parse(Console.ReadLine());
+
+      if (num < 0)
+        contNegativos++;
+      else if (num == 0)
+        contZeros++;
+      else
+        contPositivos++;
+
+      Console.WriteLine("Deseja informar outro número? (s/n) ");
+      opcao = Console.ReadLine();
+    } while (opcao == "s" || opcao == "S");
+
+    Console.WriteLine("Negativos informados: " + contNegativos);
+    Console.WriteLine("Zeros informados: " + contZeros);
+    Console.WriteLine("Poasitivos informados: " + contPositivos);
+    }
+}
