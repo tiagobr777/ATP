@@ -1,0 +1,21 @@
+using System;
+// n! = n x (n – 1) x (n – 2) x ... x 2 x 1, para n > 0 e 0! = 1.//
+class Program {
+  public static void Main (string[] args) {
+    
+    double num, f = 1, n;
+    
+    Console.WriteLine ("Digite um numero");
+    num = double.Parse(Console.ReadLine());
+   
+    
+    if (num < 0){
+      Console.WriteLine("Numero invalido");
+      return;
+    }
+     for(n = num; n > 0; n--){
+       f *= n;
+  } 
+     Console.WriteLine("Resultado: " + f);
+    }
+}
