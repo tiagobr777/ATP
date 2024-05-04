@@ -1,0 +1,24 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLine("Informe um número inteiro e positivo:");
+        int N = Convert.ToInt32(Console.ReadLine());
+
+        if (N <= 0) {
+            Console.WriteLine("O número deve ser positivo.");
+            return;
+        }
+
+        double E = 1.0; 
+        double fatorial = 1.0; 
+
+       
+        for (int i = 1; i <= N; i++) {
+            fatorial *= i; 
+            E += 1.0 / fatorial;
+        }
+
+        Console.WriteLine($"O valor de E é: {E}");
+    }
+}
