@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite o número de elementos da sequência Fibonacci a serem impressos: ");
+        int L = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Os {0} primeiros elementos da sequência de Fibonacci são:", L);
+
+       
+        int a = 0;
+        int b = 1;
+
+      
+        for (int i = 0; i < L; i++)
+        {
+            Console.WriteLine(a);
+
+            int temp = a;
+            a = b;
+            b = temp + b;
+        }
+    }
+}
