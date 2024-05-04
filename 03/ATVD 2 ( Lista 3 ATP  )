@@ -1,0 +1,50 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        double num;
+        int contPositivos = 0, contZeros = 0, contNegativos = 0, t = 0;
+        string opcao;
+
+        do
+        {
+            Console.WriteLine("Informe um número: ");
+            num = double.Parse(Console.ReadLine());
+
+            if (num < 0)
+            {
+                contNegativos++;
+                t++;
+            }
+            else if (num == 0)
+            {
+                contZeros++;
+                t++;
+            }
+            else
+            {
+                contPositivos++;
+                t++;
+            }
+
+            Console.WriteLine("Deseja informar outro número? (s/n) ");
+            opcao = Console.ReadLine();
+        } while (opcao == "s" || opcao == "S");
+        double porcentagemZeros = 0, porcentagemPos = 0, porcentagemNeg = 0;
+        porcentagemNeg = (contNegativos % (double)t) * 100;
+        porcentagemZeros = (contZeros % (double)t) * 100;
+        porcentagemPos = (contPositivos % (double)t) * 100;
+
+
+
+        Console.WriteLine("Negativos informados: " + contNegativos);
+        Console.WriteLine("Percentual de Negativos: " + porcentagemNeg + "%");
+      
+        Console.WriteLine("Zeros informados: " + contZeros);
+        Console.WriteLine("Percentual de Zeros: " + porcentagemZeros + "%" );
+        Console.WriteLine("Poasitivos informados: " + contPositivos );
+        Console.WriteLine("Percentual de Positivos: " + porcentagemPos + "%");
+    }
+}
