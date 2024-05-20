@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite a quantidade de números (N): ");
+        if (int.TryParse(Console.ReadLine(), out int N) && N > 0)
+        {
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write($"Digite o número {i + 1}: ");
+                if (int.TryParse(Console.ReadLine(), out int numero))
+                {
+                    bool isPositivo = VerificarPositivo(numero);
+                    if (isPositivo)
+                    {
+                        Console.WriteLine($"{numero} é positivo.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{numero} é negativo.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Entrada inválida. Tente novamente.");
+                    i--;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Número inválido. O programa será encerrado.");
+        }
+    }
+
+    // Função para verificar se o número é positivo
+    static bool VerificarPositivo(int numero)
+    {
+        return numero >= 0;
+    }
+}
