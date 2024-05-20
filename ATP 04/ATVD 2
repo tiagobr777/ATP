@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Lista para armazenar os salários
+        List<double> salarios = new List<double>();
+
+        // Chama o procedimento para coletar dados
+        ColetarDados(salarios);
+
+        // Calcula e exibe a média de salário
+        double mediaSalario = CalcularMediaSalario(salarios);
+        Console.WriteLine($"A média de salário da população é: {mediaSalario:C}");
+    }
+
+    // Procedimento para coletar dados
+    static void ColetarDados(List<double> salarios)
+    {
+        while (true)
+        {
+            Console.Write("Digite o salário (ou -1 para encerrar): ");
+            if (double.TryParse(Console.ReadLine(), out double salario) && salario != -1)
+            {
+                salarios.Add(salario);
+
+                Console.Write("Digite o número de filhos: ");
+                if (int.TryParse(Console.ReadLine(), out int _))
+                {
+                    // Número de filhos coletado, mas não armazenado
+                }
+                else
+                {
+                    Console.WriteLine("Número de filhos inválido. Tente novamente.");
+                }
+            }
+            else if (salario == -1)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Salário inválido. Tente novamente.");
+            }
+        }
+    }
+
+    // Função para calcular a média de salário
+    static double CalcularMediaSalario(List<double> salarios)
+    {
+        if (salarios.Count == 0)
+        {
+            return 0;
+        }
+
+        double soma = 0;
+        foreach (var salario in salarios)
+        {
+            soma += salario;
+        }
+
+        return soma / salarios.Count;
+    }
+}
