@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um valor inteiro positivo N: ");
+        if (int.TryParse(Console.ReadLine(), out int N) && N > 0)
+        {
+            double resultado = CalcularS(N);
+            Console.WriteLine($"O valor de S para N = {N} é: {resultado:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Entrada inválida. O programa será encerrado.");
+        }
+    }
+
+    // Função para calcular o valor de S de acordo com a fórmula fornecida
+    static double CalcularS(int N)
+    {
+        double S = 0.0;
+
+        for (int n = 1; n <= N; n++)
+        {
+            double numerador = n * n + 1;
+            double denominador = n + 3;
+            S += numerador / denominador;
+        }
+
+        return S;
+    }
+}
