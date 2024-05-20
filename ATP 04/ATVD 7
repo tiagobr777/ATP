@@ -1,0 +1,65 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+      Console.Write("Digite a quantidade de alunos (N): ");
+        if (int.TryParse(Console.ReadLine(), out int N) && N > 0)
+        {
+        for (int i = 0; i < N; i++)
+            {
+           Console.Write($"Digite a média final do aluno {i + 1}: ");
+           if (double.TryParse(Console.ReadLine(), out double media))
+          {
+              ExibirConceito(media);
+          }
+    else
+          {            Console.WriteLine("Entrada inválida. Tente novamente.");
+              i--;
+        }
+            }
+     }
+        else
+        {
+            Console.WriteLine("Número inválido. O programa será encerrado.");
+        }
+    }
+
+    // Procedimento para exibir o conceito com base na média final
+    static void ExibirConceito(double media)
+    {
+        string conceito;
+
+        if (media < 0 || media > 100)
+        {
+            conceito = "Média inválida";
+        }
+        else if (media <= 39)
+        {
+            conceito = "F";
+        }
+        else if (media <= 59)
+        {
+            conceito = "E";
+        }
+        else if (media <= 69)
+        {
+            conceito = "D";
+        }
+        else if (media <= 79)
+        {
+            conceito = "C";
+        }
+        else if (media <= 89)
+        {
+            conceito = "B";
+        }
+        else
+        {
+            conceito = "A";
+        }
+
+        Console.WriteLine($"Média: {media} - Conceito: {conceito}");
+    }
+}
