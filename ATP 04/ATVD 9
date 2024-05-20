@@ -1,0 +1,54 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite o número de alunos: ");
+        if (int.TryParse(Console.ReadLine(), out int numeroAlunos) && numeroAlunos > 0)
+        {
+            double mediaAprovados = CalcularMediaAprovados(numeroAlunos);
+            Console.WriteLine($"A média das notas dos alunos aprovados é: {mediaAprovados}");
+        }
+        else
+        {
+            Console.WriteLine("Número inválido de alunos. O programa será encerrado.");
+        }
+    }
+
+    // Função para calcular a média das notas dos alunos aprovados
+    static double CalcularMediaAprovados(int numeroAlunos)
+    {
+        double somaNotas = 0.0;
+        int contadorAprovados = 0;
+
+        for (int i = 1; i <= numeroAlunos; i++)
+        {
+            Console.Write($"Digite a nota do aluno {i}: ");
+            if (double.TryParse(Console.ReadLine(), out double nota) && nota >= 0)
+            {
+                if (nota >= 6)
+                {
+                    somaNotas += nota;
+                    contadorAprovados++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nota inválida. Por favor, insira uma nota válida.");
+                i--; 
+            }
+        }
+
+        // Calcula a média apenas se houve alunos aprovados
+        if (contadorAprovados > 0)
+        {
+            return somaNotas / contadorAprovados;
+        }
+        else
+        {
+            Console.WriteLine("Nenhum aluno foi aprovado.");
+            return 0.0;
+        }
+    }
+}
