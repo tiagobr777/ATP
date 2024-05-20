@@ -1,0 +1,77 @@
+/*
+ Faça um procedimento que recebe as 3 notas de um aluno por parâmetro e uma letra. Se a Faça um procedimento que recebe as 3 notas de um aluno por parâmetro e uma letra. Se a 
+letra for ‘A’, o procedimento calcula e escreve a média aritmética das notas do aluno, se for 
+‘P’, calcula e escreve a sua média ponderada (pesos: 5, 3 e 2). Faça um programa que leia 3 
+notas de N alunos e acione o procedimento para cada aluno. (N deve ser lido do teclado) */
+using System;
+
+class Program
+{  
+    public static void CalcularMedia(double[] notas, char tipo)
+    {
+        if (tipo == 'A')
+        {
+            double media = 0;
+            foreach (double nota in notas)
+            {
+                media += nota;
+            }
+            media /= notas.Length;
+            Console.WriteLine($"Média do aluno: {media}");
+        }
+        else if (tipo == 'P')
+        {
+            double[] pesos = { 5, 3, 2 };
+            double somaPonderada = 0;
+            double somaPesos = 0;
+            for (int i = 0; i < notas.Length; i++)
+            {
+                somaPonderada += notas[i] * pesos[i];
+                somaPesos += pesos[i];
+            }
+            double media = somaPonderada / somaPesos;
+            Console.WriteLine($"Média do aluno: {media}");
+        }
+        else
+        {
+            Console.WriteLine("Tipo de média inválido.");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        int numAlunos = 0;
+        try
+        {
+            Console.Write("Digite o número de alunos: ");
+            numAlunos = int.Parse(Console.ReadLine());
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Por favor, digite um número válido.");
+            return;
+        }
+
+        for (int aluno = 1; aluno <= numAlunos; aluno++)
+        {
+            double[] notas = new double[3];
+            for (int i = 0; i < 3; i++)
+            {
+                try
+                {
+                    Console.Write($"Digite a nota {i + 1} do aluno {aluno}: ");
+                    notas[i] = double.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Por favor, digite uma nota válida.");
+                    return;
+                }
+            }
+
+            Console.Write("Digite 'A' para média aritmética ou 'P' para média ponderada: ");
+            char tipoMedia = char.ToUpper(Console.ReadLine()[0]);
+            CalcularMedia(notas, tipoMedia);
+        }
+    }
+}
