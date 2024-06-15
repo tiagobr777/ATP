@@ -1,0 +1,42 @@
+// Faça um programa para preencher uma matriz 4 x 4, em seguida apresentar na tela a soma
+//dos elementos abaixo da diagonal principal. Mostre na tela os elementos da diagonal
+//principal também.
+
+using System;
+
+public class Exercicio8{
+  public static void PreencherMatriz(int[,] m){
+   Random random = new Random();
+    int soma = 0;
+    for(int i = 0; i < m.GetLength(0); i++){
+    for(int j = 0; j < m.GetLength(1); j++){
+
+        m[i, j] = random.Next(1, 10);
+        if(i > j){
+          soma += m[i, j];
+          
+        }
+      }
+    }
+    Console.WriteLine("A soma dos números abaixo da diagona principal é: \t" + soma + "\n");
+  }
+
+  public static void ExibirMatriz(int[,] m){
+    int linhas = m.GetLength(0);
+    int colunas = m.GetLength(1);
+    for(int i = 0; i < linhas; i++){
+      for(int j = 0; j < colunas; j++){
+         Console.Write(m[i, j] + "\t" ) ;
+      }
+      Console.WriteLine();
+    }
+   
+  }
+
+  public static void Executar8(){
+  int[,] matriz = new int[4,4];
+  PreencherMatriz(matriz);
+  ExibirMatriz(matriz); 
+  
+  }
+}
