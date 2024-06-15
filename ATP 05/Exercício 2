@@ -1,0 +1,52 @@
+// Faça um procedimento que preencha um vetor com as notas de uma turma de 10 alunos. Faça
+// um outro procedimento que receba um vetor preenchido com as notas, calcule a média da
+// turma e conte quantos alunos obtiveram nota acima da média. Esse procedimento deve exibir
+// a média e o resultado da contagem. Faça um programa que declare as devidas variáveis e
+// acione os procedimentos.
+
+
+using System;
+
+public class Exercicio2
+{
+    
+    public static void PreencheVetor(int[] vetor)
+    {
+
+        Console.WriteLine("Digite as 10 notas:");
+        for (int i = 0; i < vetor.Length; i++)
+        {
+            Console.Write($"Nota {i + 1}: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+    }
+
+    public static void RecebeVetor(int[] vetor)
+    {
+        int soma = 0;
+        for(int i = 0; i < vetor.Length; i++){
+            soma += vetor[i];
+        }
+        double media = soma / 10;
+
+        int contagem = 0;
+        
+        for (int i = 1; i < vetor.Length; i++)
+        {
+            if (media >= vetor[i])
+            {
+                contagem++;
+                
+            }
+        }
+        Console.WriteLine("Media dos alunos: " + media);
+        Console.WriteLine("Numero de alunos acima da média: " + contagem);
+
+    }
+    public static void Executar2(){
+        int[] notas = new int[10];
+        
+        PreencheVetor(notas);
+        RecebeVetor(notas);
+    }
+}
