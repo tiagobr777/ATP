@@ -1,0 +1,60 @@
+//Faça uma função que sorteie 3 números (entre 10 e 50) e retorne em um vetor. Depois crie
+//um procedimento que leia as tentativas do usuário para acertar um destes números. O
+//programa só deve parar quando o usuário acertar um número sorteado.
+
+
+using System;
+
+public class Exercicio5
+{
+    static int[] Sorteio()
+    {
+        int[] vetorSorteio = new int[3];
+        Random random = new Random();
+        for (int i = 0; i < vetorSorteio.Length; i++)
+        {
+            vetorSorteio[i] = random.Next(10, 51);
+        }
+        return vetorSorteio;
+    }
+
+    public static void LerTentativas(int[] vetorSorteio)
+    {
+        bool acertou = false;
+        while (!acertou)
+        {
+            Console.WriteLine("Digite um número de 10 a 50:");
+            int tentativa = int.Parse(Console.ReadLine());
+            if (tentativa >= 10 && tentativa <= 50)
+            {
+                for (int i = 0; i < vetorSorteio.Length; i++)
+                {
+                    if (tentativa == vetorSorteio[i])
+                    {
+                        acertou = true;
+                        break;
+                    }
+                }
+
+                if (acertou)
+                {
+                    Console.WriteLine("Parabéns! Você acertou um dos números sorteados.");
+                }
+                else
+                {
+                    Console.WriteLine("Você errou, tente novamente.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("O número deve estar entre 10 e 50. Tente novamente.");
+            }
+        }
+    }
+
+    public static void Executar5()
+    {
+        int[] numeroSorteado = Sorteio();
+        LerTentativas(numeroSorteado);
+    }
+}
