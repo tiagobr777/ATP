@@ -1,0 +1,60 @@
+// Faça um procedimento que preencha um vetor X de 10 elementos. A seguir faça uma função
+// que receba um vetor preenchido, teste e copie todos os valores negativos deste vetor para um
+// novo vetor (sem deixar elementos vazios entre os valores copiados), retornando este vetor
+// como resultado. Faça um procedimento que recebe e exibe o conteúdo de um vetor. Faça um
+// programa que faça as devidas declarações e acione os módulos para exemplificar o seu uso. 
+
+
+using System;
+
+public class Exercicio3
+{
+
+    public static void PreencheVetorX(int[] x)
+    {
+        Console.WriteLine("Digite os elementos do vetor");
+        for (int i = 0; i < x.Length; i++)
+        {
+            Console.Write($"Nota {i + 1}: ");
+            x[i] = int.Parse(Console.ReadLine());
+        }
+    }
+
+    static int[] RecebeVetorX(int[] x)
+    {
+        int contaNegeativos = 0;
+        for (int i = 0; i < x.Length; i++)
+        {
+            if (x[i] < 0)
+            {
+                contaNegeativos++;
+            }
+        }
+
+        int[] negativos = new int[contaNegeativos];
+        int n = 0;
+        for(int i = 0; i < x.Length; i++){
+            if(x[i] < 0){
+                negativos[n] = x[i];
+                n++;
+            }
+        }
+        return negativos;
+    }
+
+    public static void ExibirVetor(int[] x){
+        Console.WriteLine("Conteúdo do Vetor:");
+        for(int i = 0; i < x.Length; i++){
+            Console.WriteLine(x[i] + " ");
+            
+        }
+        Console.WriteLine();
+    }
+    public static void Executar3()
+    {
+        int[] elementos = new int[10];
+        PreencheVetorX(elementos);
+        int[] negativos = RecebeVetorX(elementos);
+         ExibirVetor(negativos);
+    }
+}
