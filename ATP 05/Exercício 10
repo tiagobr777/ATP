@@ -1,0 +1,105 @@
+//Escrever um procedimento que preenche uma matriz M(10,10) e a escreve. Faça outros
+//procedimentos que recebam uma matriz preenchida, realize as trocas indicadas a seguir
+//(um procedimento para cada uma delas) e exiba a matriz resultante da troca:
+//a) a linha 2 com a linha 8
+//b) a coluna 4 com a coluna 10
+//c) a diagonal principal com a diagonal secundária
+//d) a linha 5 com a coluna 10.
+//Faça um programa que faça as devidas declarações e acione os módulos para exemplificar
+//o seu uso.
+
+using System;
+
+public class Exercicio10{
+  
+  
+  public static void PreencherMatriz(int[,] m){
+
+    Random random = new Random();
+    for(int i = 0; i < m.GetLength(0); i++){
+      for(int j = 0; j < m.GetLength(1); j++){
+        m[i, j] = random.Next(1, 10);
+      }
+    }
+  }
+  
+  
+  public static void TrocarMatrizA(int[,] m, int linhaA, int linhaB){
+      int colunas = m.GetLength(1);
+      for(int i = 0; i < colunas; i++){
+        int aux = m[linhaA, i];
+        m[linhaA, i] = m[linhaB, i];
+        m[linhaB, i] = aux;
+                  
+        
+      }
+       
+  }
+
+  public static void TrocarMatrizB(int[,] m, int colunaA, int colunaB){
+    int linhas = m.GetLength(0);
+    for(int i = 0; i < linhas; i++){
+      int aux = m[i, colunaA];
+      m[i, colunaA] = m[i, colunaB];
+      m[i, colunaB] = aux;
+    }
+    
+  }
+
+  public static void TrocarMatrizC(int[,] m){
+    int tamanho = Math.Min(m.GetLength(0), m.GetLength(1));
+    for(int i = 0; i < tamanho; i++){
+      int aux = m[i, i];
+      m[i,i] = m[i, tamanho - 1 - i];
+      m[i, tamanho - 1 - i] = aux;
+    }
+    
+  }
+  
+  public static void TrocaMatrizD(int[,] m, int linha, int coluna){
+ 
+    for(int i = 0; i < m.GetLength(1); i++){
+     int aux = m[linha, i];
+     m[linha, i] = m[i, coluna];
+     m[i, coluna] = aux;
+    }
+   
+  }
+
+  public static void ExibirMatrizM(int[,] m){
+   for(int i = 0; i < m.GetLength(0); i++){
+     for(int j = 0; j < m.GetLength(1); j++){
+       Console.Write(m[i, j] + "\t");
+       
+     }
+     Console.WriteLine();
+   }
+    
+  }
+
+
+  
+  public static void Executar10(){
+    int[,] m = new int[10,10];
+    PreencherMatriz(m);
+    Console.WriteLine("Matriz original: ");
+    ExibirMatrizM(m);
+    
+    TrocarMatrizA(m, 1, 7);
+    Console.WriteLine("Matriz letra A: ");
+    ExibirMatrizM(m);
+    
+    TrocarMatrizB(m, 3, 9);
+    Console.WriteLine("Matriz letra B: ");
+    ExibirMatrizM(m);
+
+    TrocarMatrizC(m);
+    Console.WriteLine("Matriz letra C: ");
+    ExibirMatrizM(m);
+    
+    TrocaMatrizD(m, 4, 9);
+    Console.WriteLine("Matriz letra D: ");
+    ExibirMatrizM(m);
+    
+  }
+}
