@@ -1,0 +1,55 @@
+//Faça um procedimento que preencha 2 vetores X e Y com 10 elementos cada um (ocupando
+//as posições de 0 a 9 em cada vetor). Faça um outro procedimento que receba dois vetores
+//preenchidos e gera um novo vetor com os elementos desses 2 vetores intercalados de tal
+//forma que nas posições ímpares do novo vetor estejam os elementos do primeiro vetor e nas
+//posições pares, os elementos do segundo vetor recebido por parâmetro. Faça um
+//procedimento que receba e exiba o conteúdo de um vetor. Faça um programa que faça as
+//devidas declarações e acione os módulos para exemplificar o seu uso.
+
+using System;
+
+public class Exercicio4
+{
+  public static void PreencheVetorXY(int[] x, int[] y)
+  {
+      Console.WriteLine("Digite os elementos do vetor X");
+      for (int i = 0; i < x.Length; i++)
+      {
+          Console.Write($"Nota {i + 1}: ");
+          x[i] = int.Parse(Console.ReadLine());
+      }
+  
+    Console.WriteLine("Digite os elementos do vetor Y");
+    for (int j = 0; j < y.Length; j++)
+    {
+        Console.Write($"Nota {j + 1}: ");
+        y[j] = int.Parse(Console.ReadLine());
+    }
+  }
+
+  public static void IntercalarVetores(int[] x, int[] y, int[]vetorXY){
+    int index = 0;
+    for(int i = 0; i < x.Length; i++){
+      vetorXY[index++] = x[i];
+      vetorXY[index++] = y[i];
+    }
+  }
+
+public static void ExibirVetorXY(int[] vetor){
+  Console.WriteLine("Conteúdo do vetor:");
+  for(int i = 0; i < vetor.Length; i++){
+    Console.WriteLine($"Elemento {i}: {vetor[i]}");
+  }
+}
+  public static void Executar4(){
+    int[] elementosX = new int[10];
+    int[] elemntosY = new int[10];
+    int[] vetorXY = new int[elementosX.Length + elemntosY.Length];
+    PreencheVetorXY(elementosX, elemntosY);
+    IntercalarVetores(elementosX, elemntosY, vetorXY);
+    ExibirVetorXY(vetorXY);
+    
+  }
+
+  
+}
