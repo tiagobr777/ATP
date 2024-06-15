@@ -1,0 +1,94 @@
+// Faça um procedimento que preencha uma matriz M 5 x 5. 
+//Faça uma função que receba
+//uma matriz preenchida, calcule e retorne cada uma das somas a seguir (uma função
+//para cada item abaixo):
+//a) da linha 4 de M
+//b) da coluna 2 de M
+//c) da diagonal principal
+//d) da diagonal secundária
+//e) de todos os elementos da matriz
+
+using System;
+
+public class Exercicio7{
+  public static void PreencherMatriz(int[,] m){
+   
+    Random random = new Random();
+    for(int i = 0; i < m.GetLength(0); i++){
+       for(int j = 0; j < m.GetLength(1); j++){
+         m[i, j] = random.Next(1, 10);
+       }
+   } 
+  }
+
+   static int SomaA(int[,]m){
+     int linha = 3;
+     int soma = 0;
+     for(int i = 0; i < linha; i++){
+       soma += m[i, linha];
+     }
+     return soma;
+   }
+
+  static int SomaB(int[,] m){
+    int coluna = 1;
+    int soma = 0;
+    for(int i = 0; i < coluna; i++){
+      soma += m[i, coluna];
+    }
+    return soma;
+  }
+
+  static int SomaC(int[,] m){
+    int soma = 0;
+    int tamanho = Math.Min(m.GetLength(0), m.GetLength(1));
+
+    for(int i = 0; i < tamanho; i++){
+      soma += m[i, i];
+    }
+    return soma;
+  }
+
+  static int SomaD(int[,] m){
+    int soma = 0;
+    int tamanho = Math.Min(m.GetLength(0), m.GetLength(1));
+
+    for(int i = 0; i < tamanho; i++) {
+      soma += m[i, tamanho -i - 1];
+    }
+    return soma;
+  }
+
+  static int SomaE(int[,] m){
+    int soma = 0;
+    int coluna = m.GetLength(1);
+    int linha = m.GetLength(0);
+    
+    for(int i = 0; i < m.GetLength(1); i++){
+      for(int j = 0; j < m.GetLength(0); j++){
+        soma += m[i, j];
+      }
+    }  
+    return soma;
+    }
+  public static void ExibirMatrizM(int[,] m){
+    Console.WriteLine("Conteúdo da matriz:");
+    for(int i = 0; i < m.GetLength(0); i++){
+      for(int j = 0; j < m.GetLength(1); j++){
+
+        Console.Write(m[i, j] + "\t");
+        }
+      Console.WriteLine();
+    }
+  }
+  public static void Executar7(){
+    int[,] matrizM = new int [5,5];
+    PreencherMatriz(matrizM);
+    ExibirMatrizM(matrizM);
+    Console.WriteLine("A soma da letra A é: " + SomaA(matrizM));
+    Console.WriteLine("A soma da letra B é: " + SomaB(matrizM));
+    Console.WriteLine("A soma da letra C é: " + SomaC(matrizM));
+    Console.WriteLine("A soma da letra D é: " + SomaD(matrizM));
+    Console.WriteLine("A soma da letra E é: " + SomaE(matrizM));
+  }
+}
