@@ -1,0 +1,107 @@
+// Faça um procedimento que preencha 2 matrizes, A 4 x 6 e B 4 x 6. Faça uma função para
+//cada uma das situações a seguir, que recebe duas matrizes preenchidas, calcula e retorna as
+//matrizes indicadas :
+//a) uma matriz S que seja a soma de A e B.
+//b) uma matriz D que seja a diferença de A e B. (A - B).
+//Faça um programa que faça as devidas declarações e acione os módulos para exemplificar
+//o seu uso. Escreva as matrizes resultantes do acionamento de cada uma das funções.
+
+using System;
+
+public class Exercicio9
+{
+    public static void PreencheMatrizA(int[,] a)
+    {
+        Random random = new Random();
+        for (int i = 0; i < a.GetLength(0); i++)
+        {
+            for (int j = 0; j < a.GetLength(1); j++)
+            {
+                a[i, j] = random.Next(1, 10);
+            }
+        }
+    }
+   
+  public static void PreencherMatrizB(int[,] b)
+    {
+        Random random = new Random();
+        for (int i = 0; i < b.GetLength(0); i++)
+        {
+            for (int j = 0; j < b.GetLength(1); j++)
+            {
+                b[i, j] = random.Next(1, 10);
+            }
+        }
+      }
+        static int[,] Soma(int[,] matrizA, int[,] matrizB)
+        {
+            int linhas = matrizA.GetLength(0);
+            int colunas = matrizB.GetLength(1);
+            int[,] matrizS = new int[linhas, colunas];
+            for (int i = 0; i < matrizS.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizS.GetLength(1); j++)
+                {
+                    matrizS[i, j] = matrizA[i, j] + matrizB[i, j];
+
+                }
+            }
+            return matrizS;
+        }
+
+
+        static int[,] Subtracao(int[,] matrizA, int[,] matrizB)
+        {
+            int linhas = matrizA.GetLength(0);
+            int colunas = matrizB.GetLength(1);
+            int[,] matrizD = new int[linhas, colunas];
+            for (int i = 0; i < matrizD.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrizD.GetLength(1); j++)
+                {
+                    matrizD[i, j] = matrizA[i, j] - matrizB[i, j];
+
+                }
+            }
+            return matrizD;
+        }
+      
+        public static void ExibirMatriz(int[,] matriz)
+        {
+
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    Console.Write(matriz[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+
+
+
+        public static void Executar9()
+        {
+            int[,] matrizA = new int[4, 6];
+            int[,] matrizB = new int[4, 6];
+            PreencheMatrizA(matrizA);
+            PreencherMatrizB(matrizB);
+            int[,] matrizS = Soma(matrizA, matrizB);
+            int[,] matrizD = Subtracao(matrizA, matrizB);
+          Console.WriteLine("Matriz A:");
+          ExibirMatriz(matrizA);
+
+          Console.WriteLine("Matriz B:");
+          ExibirMatriz(matrizB);
+
+
+          Console.WriteLine("Matriz Soma (A + B):");
+          ExibirMatriz(matrizS);
+
+          Console.WriteLine("Matriz Subtração (A - B):");
+          ExibirMatriz(matrizD);
+          
+        }
+  }
