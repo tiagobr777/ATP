@@ -1,0 +1,71 @@
+//Em uma cidade, sabe-se hipoteticamente que, em outubro de 2022, não ocorreu temperatura
+//inferior a 15°C, nem superior a 40°C. Faça um programa que armazene as temperaturas de
+//cada dia de outubro em um vetor (de 31 posições), calcule e imprima:
+//• A menor e a maior temperatura ocorrida; ok
+//• A temperatura média;
+//• O número de dias nos quais a temperatura foi inferior a temperatura média.
+
+using System;
+
+public class Exercicio6
+{
+  public static  void MaiorMenorTemperatura(int[] temperatura)
+  {
+      int menorTemperatura = 41, maiorTemperatura = 14, posicaoMenor = 0, posicaoMaior = 0;
+      
+    Random random = new Random();
+      for (int i = 0; i < temperatura.Length; i++)
+      {
+         temperatura[i] = random.Next(15, 41);
+  
+        if (temperatura[i] < menorTemperatura)
+        {
+            menorTemperatura = temperatura[i];
+            posicaoMenor = i;
+        }
+        if (temperatura[i] > maiorTemperatura)
+        {
+            maiorTemperatura = temperatura[i];
+            posicaoMaior = i;
+        }
+      }
+          Console.WriteLine("A maior temperatura foi " + maiorTemperatura + " no dia " + (posicaoMaior));
+     Console.WriteLine("A menor temperatura foi " + menorTemperatura + " no dia " + (posicaoMenor));
+  }
+
+
+  public static void TemperaturaMedia(int[] vetorMedia){
+        int soma = 0;
+       for(int i = 0; i < vetorMedia.Length; i++){
+         soma += vetorMedia[i];
+       }
+     double media = soma / 31;
+    
+    int dias = 0;
+
+    for (int i = 1; i < vetorMedia.Length; i++)
+    {
+        if (vetorMedia[i] < media)
+        {
+            dias++;
+
+        }
+    }
+    Console.WriteLine("A temperatura média foi: " + media);
+    Console.WriteLine("O número de dias que a temperatura esteve abaixo da média são: " + dias);
+  }
+
+  public static void ExibirTemperatura(int[] temperaturaOutubro){
+    Console.WriteLine("Temperaturas de outubro: ");
+    for(int i = 1; i < temperaturaOutubro.Length; i++){
+        Console.WriteLine($" {i}: {temperaturaOutubro[i]}");
+    }
+  }
+
+  public static void Executar6(){
+    int[] vetorTemperatura = new int[32];
+    MaiorMenorTemperatura(vetorTemperatura);
+    TemperaturaMedia(vetorTemperatura);
+    ExibirTemperatura(vetorTemperatura);
+  }
+}
