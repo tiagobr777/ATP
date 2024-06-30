@@ -1,0 +1,43 @@
+//Implemente um programa que leia um arquivo texto e imprima, linha a linha, o seu conteúdo 
+//na tela. Imprima também a quantidade de linhas que este arquivo possui.
+
+using System;
+using System.IO;
+
+public class Exercicio5 
+{
+    static void Rodar5()
+    {
+        string caminhoArquivo = @"C:\Users\tiago\Área de Trabalho\atp.txt";
+
+        try
+        {
+            
+            if (File.Exists(caminhoArquivo))
+            {
+                
+                string[] linhas = File.ReadAllLines(caminhoArquivo);
+
+                
+                foreach (string linha in linhas)
+                {
+                    Console.WriteLine(linha);
+                }
+
+               
+                Console.WriteLine($"\nO arquivo possui {linhas.Length} linhas.");
+            }
+            else
+            {
+                Console.WriteLine("O arquivo não foi encontrado.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + ex.Message);
+        }
+    }
+     public static void Executar5(){
+        Rodar5();
+      }
+}
