@@ -1,0 +1,53 @@
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+   int escolha = 0;
+    Console.WriteLine("Digite o exercicio: ");
+  escolha = int.Parse(Console.ReadLine());
+
+    switch (escolha)
+    {
+
+    case 1:
+      Exercicio1.Executar();
+      break;
+
+    case 2:
+      Exercicio2.Executar2();
+      break;
+
+    case 3:
+      Exercicio3.Executar3();
+      break;
+
+    case 4:
+      Exercicio4.Executar4();
+      break;
+
+    case 5:
+     Exercicio5.Executar5();
+      break;
+
+    case 6:
+      Exercicio6.Executar6();
+      break;
+
+    case 7:
+      Exercicio7.Executar7();
+      break;
+
+    case 8:
+      Exercicio8.Executar8();
+      break;
+      
+    case 9:
+      Exercicio9.Executar9();
+      break;
+      
+    case 10:
+      Exercicio10.Executar10();
+      break;
+    }
+  }
+}
