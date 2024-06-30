@@ -1,0 +1,31 @@
+// Faça um programa para ler uma frase e contar quantos caracteres são espaços em brancos.
+
+using System;
+public class Exercicio1
+{
+
+  public static string ReceberFrase(){
+    
+    Console.WriteLine("Digite uma frase");
+ string frase = Console.ReadLine();
+    return frase;
+  }
+
+  public static int LerFrase(string frase){
+    int contagem = 0;
+    for(int i = 0; i < frase.Length; i++){
+      if(frase[i] == ' '){
+        contagem ++;
+      }
+    }
+    return contagem;
+  }
+
+  public static void Executar(){
+  string frase = ReceberFrase();
+  int contagem = LerFrase(frase);
+    Console.WriteLine("O número de espaços na frase é : " + contagem);
+    
+  }
+  
+}
