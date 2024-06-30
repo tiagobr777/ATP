@@ -1,0 +1,110 @@
+//Crie um programa que receba dados de vários alunos (Matricula e Telefone) e armazene em 
+//um arquivo texto. Crie no mesmo programa uma opção de ler dados de um arquivo já 
+//armazenado dados de alunos.
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+public class Exercicio9
+{
+    static void Rodar9()
+    {
+        string caminhoArquivo = "alunos.txt"; 
+
+        while (true)
+        {
+            Console.WriteLine("\nMenu:");
+            Console.WriteLine("1. Inserir dados de alunos");
+            Console.WriteLine("2. Ler dados de alunos do arquivo");
+            Console.WriteLine("3. Sair");
+            Console.Write("Escolha uma opção: ");
+            string opcao = Console.ReadLine();
+
+            switch (opcao)
+            {
+                case "1":
+                    InserirDadosAlunos(caminhoArquivo);
+                    break;
+                case "2":
+                    LerDadosAlunos(caminhoArquivo);
+                    break;
+                case "3":
+                    Console.WriteLine("Encerrando o programa...");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+
+    static void InserirDadosAlunos(string caminhoArquivo)
+    {
+        try
+        {
+            Console.WriteLine("\nInsira os dados dos alunos:");
+            List<string> dadosAlunos = new List<string>();
+
+            while (true)
+            {
+                Console.Write("Matrícula (ou digite 'sair' para finalizar): ");
+                string matricula = Console.ReadLine();
+                if (matricula.ToLower() == "sair")
+                    break;
+
+                Console.Write("Telefone: ");
+                string telefone = Console.ReadLine();
+
+                string linhaDados = $"{matricula},{telefone}";
+                dadosAlunos.Add(linhaDados);
+            }
+
+           
+            using (StreamWriter writer = new StreamWriter(caminhoArquivo, true))
+            {
+                foreach (string linha in dadosAlunos)
+                {
+                    writer.WriteLine(linha);
+                }
+            }
+
+            Console.WriteLine($"\nDados dos alunos foram armazenados no arquivo {caminhoArquivo}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao escrever no arquivo: " + ex.Message);
+        }
+    }
+
+    static void LerDadosAlunos(string caminhoArquivo)
+    {
+        try
+        {
+            if (File.Exists(caminhoArquivo))
+            {
+                Console.WriteLine("\nDados dos alunos armazenados no arquivo:");
+                using (StreamReader reader = new StreamReader(caminhoArquivo))
+                {
+                    string linha;
+                    while ((linha = reader.ReadLine()) != null)
+                    {
+                        string[] dados = linha.Split(',');
+                        Console.WriteLine($"Matrícula: {dados[0]}, Telefone: {dados[1]}");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Arquivo não encontrado. Não há dados de alunos armazenados.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + ex.Message);
+        }
+    }
+  public static void Executar9(){
+      Rodar9();
+  }
+}
