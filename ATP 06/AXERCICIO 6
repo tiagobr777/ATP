@@ -1,0 +1,52 @@
+//Faça um programa que solicite ao usuário um número, em seguida, imprima na tela todos os 
+//seus divisores. Salve em um arquivo texto a soma total desses divisores.
+
+
+using System;
+using System.IO;
+
+public class Exercicio6
+{
+    static void Rodar6()
+    {
+        
+        Console.Write("Digite um número: ");
+        int numero;
+
+        
+        while (!int.TryParse(Console.ReadLine(), out numero))
+        {
+            Console.Write("Entrada inválida. Digite um número inteiro: ");
+        }
+
+        
+        Console.WriteLine($"Divisores de {numero}:");
+        int somaDivisores = 0;
+        for (int i = 1; i <= numero; i++)
+        {
+            if (numero % i == 0)
+            {
+                Console.WriteLine(i);
+                somaDivisores += i;
+            }
+        }
+
+        
+        Console.WriteLine($"\nA soma dos divisores de {numero} é: {somaDivisores}");
+
+        
+        string caminhoArquivo = @"C:\Users\tiago\Área de Trabalho\atp.txt";
+        try
+        {
+            File.WriteAllText(caminhoArquivo, $"A soma dos divisores de {numero} é: {somaDivisores}");
+            Console.WriteLine($"\nA soma dos divisores foi salva no arquivo {caminhoArquivo}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao salvar a soma dos divisores: " + ex.Message);
+        }
+    }
+    public static void Executar6(){
+        Rodar6();
+      }
+}
