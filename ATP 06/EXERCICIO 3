@@ -1,0 +1,52 @@
+//O código de César é uma das mais simples e conhecidas técnicas de criptografia. É um tipo 
+//de substituição na qual cada letra do texto é substituída por outra, que se apresenta no alfabeto 
+//abaixo dela um número fixo de vezes. Por exemplo, com uma troca de três posições, ‘A’ 
+//seria substituído por ‘D’, ‘B’ se tornaria ‘E’, e assim por diante. Implemente um programa 
+//que faça uso desse Código de César (3 posições), entre com uma string e retorne a string 
+//codificada. 
+//Exemplo: 
+//String: a ligeira raposa marrom saltou sobre o cachorro cansado 
+//Nova string: D OLJHLUD UDSRVD PDUURP VDOWRX VREUH R FDFKRUUR 
+//FDQVDGR
+  
+using System;
+
+public class Exercicio3
+{
+    static string ReceberTexto()
+    {
+        Console.WriteLine("Digite o texto:");
+        string texto = Console.ReadLine();
+        return texto;
+    }
+
+    static string CodificarTexto(string texto)
+    {
+        string resultado = "";
+        for (int i = 0; i < texto.Length; i++)
+        {
+            char c = texto[i];
+            if (char.IsLetter(c))
+            {
+                char deslocado = (char)(c + 3);
+                if ((char.IsLower(c) && deslocado > 'z') || (char.IsUpper(c) && deslocado > 'Z'))
+                {
+                    deslocado = (char)(deslocado - 26);
+                }
+                resultado += deslocado;
+            }
+            else
+            {
+                resultado += c;
+            }
+        }
+        return resultado.ToUpper(); 
+    }
+
+    public static void Executar3()
+    {
+        string texto = ReceberTexto();
+        string textoCodificado = CodificarTexto(texto);
+        Console.WriteLine("Texto codificado: " + textoCodificado);
+    }
+  }
