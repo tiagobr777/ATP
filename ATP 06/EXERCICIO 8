@@ -1,0 +1,54 @@
+using System;
+using System.IO;
+
+public class Exercicio8
+{
+    static void Rodar8()
+    {
+
+        Console.Write("Informe a quantidade de veículos da locadora: ");
+        int veiculos = int.Parse(Console.ReadLine());
+
+        Console.Write("Informe o valor do aluguel por veículo: ");
+        double valorAluguel = double.Parse(Console.ReadLine());
+
+
+        double faturamentoMensal = (veiculos * valorAluguel) / 3;
+        double faturamentoAnual = faturamentoMensal * 12;
+
+
+        double multa = (faturamentoMensal / 10) * 0.2;
+
+
+        double valorManutencaoAnual = (veiculos * 0.02) * 600;
+
+
+        Console.WriteLine("\nResultados:");
+        Console.WriteLine($"Faturamento mensal: R$ {faturamentoMensal:F2}");
+        Console.WriteLine($"Faturamento anual: R$ {faturamentoAnual:F2}");
+        Console.WriteLine($"Valor ganho com multas no mês: R$ {multa:F2}");
+        Console.WriteLine($"Valor gasto com manutenção anual: R$ {valorManutencaoAnual:F2}");
+
+
+        string caminhoArquivo = "resultado.txt";
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(caminhoArquivo))
+            {
+                writer.WriteLine($"Faturamento mensal: R$ {faturamentoMensal:F2}");
+                writer.WriteLine($"Faturamento anual: R$ {faturamentoAnual:F2}");
+                writer.WriteLine($"Valor ganho com multas no mês: R$ {multa:F2}");
+                writer.WriteLine($"Valor gasto com manutenção anual: R$ {valorManutencaoAnual:F2}");
+            }
+            Console.WriteLine($"\nOs resultados foram salvos no arquivo {caminhoArquivo}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao gravar o arquivo: " + ex.Message);
+        }
+    }
+    public static void Executar8()
+    {
+        Rodar8();
+    }
+}
