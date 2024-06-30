@@ -1,0 +1,85 @@
+//Faça um programa para inserir N letras informadas pelo usuário em um arquivo texto. Onde 
+//N é uma quantidade de letras definida pelo usuário. Depois de inseridas as N letras, o 
+//programa deverá ler todas as N letras do arquivo, calcular e mostrar a quantidade de vogais, 
+//ou seja, quantas letras a, e, i, o, u.
+using System;
+using System.IO;
+
+public class Exercicio7
+{
+    static void Rodar7()
+    {
+        Console.Write("Digite a quantidade de letras que deseja inserir no arquivo: ");
+        int quantidadeLetras;
+
+        
+        while (!int.TryParse(Console.ReadLine(), out quantidadeLetras) || quantidadeLetras <= 0)
+        {
+            Console.Write("Quantidade inválida. Digite um número inteiro positivo: ");
+        }
+
+        
+        string caminhoArquivo = "letras.txt";
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(caminhoArquivo))
+            {
+                Console.WriteLine($"\nDigite as {quantidadeLetras} letras:");
+                for (int i = 0; i < quantidadeLetras; i++)
+                {
+                    char letra = Console.ReadKey().KeyChar;
+                    writer.Write(letra);
+                }
+            }
+            Console.WriteLine($"\n\nAs {quantidadeLetras} letras foram inseridas no arquivo {caminhoArquivo}.");
+
+           
+            ContarEVogais(caminhoArquivo);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao manipular o arquivo: " + ex.Message);
+        }
+    }
+
+    static void ContarEVogais(string caminhoArquivo)
+    {
+        try
+        {
+            
+            string letras;
+            using (StreamReader reader = new StreamReader(caminhoArquivo))
+            {
+                letras = reader.ReadToEnd();
+            }
+
+            
+            letras = letras.ToLower();
+
+            
+            int contadorVogais = 0;
+
+            
+            string vogais = "aeiou";
+
+            
+            foreach (char letra in letras)
+            {
+                if (vogais.Contains(letra))
+                {
+                    contadorVogais++;
+                }
+            }
+
+            
+            Console.WriteLine($"\nNo arquivo {caminhoArquivo}, há {contadorVogais} vogais (a, e, i, o, u).");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + ex.Message);
+        }
+    }
+  public static void Executar7(){
+    Rodar7();
+  }
+}
