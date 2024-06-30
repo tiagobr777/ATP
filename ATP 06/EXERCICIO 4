@@ -1,0 +1,43 @@
+//Implemente um programa que abra o arquivo texto e conte a quantidade de caracteres ‘a’ 
+//que estão presentes nele. Imprima a quantidade na tela.
+
+
+using System;
+using System.IO;
+public class Exercicio4
+{
+ public static void Rodar()
+    {
+        string filePath = @"C:\Users\tiago\Área de Trabalho\atp.txt";
+
+        try
+        {
+            
+            string text = File.ReadAllText(filePath);
+
+            
+            int count = 0;
+
+            
+            foreach (char c in text)
+            {
+                if (c == 'a' || c == 'A')
+                {
+                    count++;
+                }
+            }
+
+            
+            Console.WriteLine("A quantidade de caracteres 'a' no arquivo é: " + count);
+        }
+        catch (Exception e)
+        {
+         
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + e.Message);
+        }
+    }
+
+  public static void Executar4(){
+    Rodar();
+  }
+}
